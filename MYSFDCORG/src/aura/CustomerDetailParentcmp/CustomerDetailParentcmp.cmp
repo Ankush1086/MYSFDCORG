@@ -1,0 +1,22 @@
+<aura:component >
+    
+     <div class="container">
+         
+          <div class="mainContainer">
+              <c:CustomerDemographiccmp aura:id="demographic"/>
+              
+              <br/>
+              <c:CustomerAddresscmp aura:id="customeraddress"/>
+              
+              <br/>
+              <lightning:layoutItem padding="horizontal-small" largeDeviceSize="3" mediumDeviceSize="3" smallDeviceSize="12" size="12">
+	                	
+	                   <lightning:button class="slds-float_left" aura:id="submitbnt" variant="brand" label="Submit Data" title="Next" onclick="{!c.save}"  /> 
+	              
+	         </lightning:layoutItem>
+         </div>
+         
+         
+    </div>
+	
+</aura:component>

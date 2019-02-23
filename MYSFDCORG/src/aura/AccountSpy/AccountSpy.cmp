@@ -1,0 +1,43 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global"  controller="AccountController_Cls">
+    <ltng:require scripts="{!$Resource.JSUtilities}" afterScriptsLoaded="{!c.afterScriptsLoaded}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--Include StreamingApiHandler child component and pass channel name to subscribe
+     ex: "/topic/AccountSpy" is my pushtopic channel name
+	 once the event is fired, it will handled in handleMessage controller method -->
+    <aura:attribute name="AccountID" type="String" />
+     <aura:attribute name="TaskList" type="String[]" />
+	<c:StreamingApiHandler channelName="/topic/TaskSpy" onStreamEvent="{!c.handleMessage}" />
+    
+    
+    
+    
+   <!--  <aura:iteration items="{!v.TaskList}" var="row" >-->
+      
+         
+       
+                               
+                                    <div class="slds-scrollable">
+                                        <table class="slds-table slds-table--bordered"> 
+                                            <thead>
+                                                <tr class="slds-hint-parent">
+                                                    <th>Subject</th>
+                                                    <th>Status</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                              <aura:iteration items="{!v.TaskList}" var="conId" >
+                                             <tr >
+                                                    <td>{!conId.Subject}</td>
+                                                    <td>{!conId.Status}</td>
+                                                   
+                                                </tr>
+                                              </aura:iteration>
+                                        </table>
+                                    </div>
+                             
+                           
+   <!-- </aura:iteration>-->
+    
+    
+</aura:component>

@@ -1,0 +1,17 @@
+<apex:page controller="CreateAccountController">
+    <apex:form >
+        <apex:pageBlock title="Account Details">
+            
+            <apex:pageBlockSection title="Account Details" columns="2">
+                <apex:inputField value="{!newAccountObj.name}"/>
+                <apex:inputField value="{!newAccountObj.Phone}"/>
+                <apex:inputField value="{!newAccountObj.CustomerID__c}"/>
+                
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageMessages ></apex:pageMessages>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

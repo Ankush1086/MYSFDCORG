@@ -1,0 +1,53 @@
+<aura:component controller="CustomerSaveController">
+   <ltng:require scripts="{!$Resource.JSUtilities}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="lDevice"  type="String" default="3"/>
+	<aura:attribute name="mDevice"  type="String" default="3"/>
+	<aura:attribute name="sDevice"  type="String" default="3"/>
+	<aura:attribute name="isDisabled"  type="Boolean" default="true"/>
+    <aura:attribute name="contactValidationMap" type="Map" access="PRIVATE" />
+    <aura:attribute name="isDataValid" type="Boolean" default="true" access="PRIVATE" />
+    
+    <aura:registerEvent name="BroadcastCustomerID" type="c:BroadcastCustomerID"/>
+    
+    <aura:attribute name="contact" type="Contact" default="{ 'sobjectType': 'Contact',
+	                                                                              'FirstName':'',
+																				  'LastName':'',
+																				  'Email':'',
+																				  'MobilePhone':'',
+	                                                                              }" />
+    
+     <aura:method name="validate" action="{!c.validate}" description="validate all data"> 
+	</aura:method> 
+    
+     <aura:method name="save" action="{!c.save}" description="save all data"> 
+	</aura:method>
+    
+    <div id="sourcingDetails" class="contentBox">
+		<div class="headerDiv" >
+            
+            <lightning:layout class="slds-grid--vertical-stretch" horizontalAlign="left" multipleRows="true">
+					<lightning:layoutItem padding="horizontal-small" largeDeviceSize="{!v.lDevice}" mediumDeviceSize="{!v.mDevice}" smallDeviceSize="{!v.sDevice}" size="12">
+                        
+                        <lightning:input aura:id="contact.FirstName" disabled="false" name="First Name" required="true" value="{!v.contact.FirstName}" label="First Name" onblur="{!c.handleBlur}" />
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem padding="horizontal-small" largeDeviceSize="{!v.lDevice}" mediumDeviceSize="{!v.mDevice}" smallDeviceSize="{!v.sDevice}" size="12">
+                        
+                        <lightning:input aura:id="contact.LastName" disabled="false" name="Last Name" required="true" value="{!v.contact.LastName}" label="Last Name" />
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem padding="horizontal-small" largeDeviceSize="{!v.lDevice}" mediumDeviceSize="{!v.mDevice}" smallDeviceSize="{!v.sDevice}" size="12">
+                        
+                        <lightning:input aura:id="contact.Email" disabled="false" name="Email" required="true" value="{!v.contact.Email}" label="Email" />
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-small" largeDeviceSize="{!v.lDevice}" mediumDeviceSize="{!v.mDevice}" smallDeviceSize="{!v.sDevice}" size="12">
+                        
+                        <lightning:input aura:id="contact.Mobilephone" disabled="false" name="Mobilephone" required="true" value="{!v.contact.Mobilephone}" label="Mobile No" />
+                </lightning:layoutItem>
+            </lightning:layout>
+            
+        </div>
+    </div>
+	
+</aura:component>

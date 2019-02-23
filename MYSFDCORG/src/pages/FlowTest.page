@@ -1,0 +1,7 @@
+<apex:page standardController="User">
+
+ <flow:interview name="Assign_User_To_Permession_Set">
+  <apex:param name="VarT_UserID" value="{!User.Id}"/>
+ </flow:interview>
+  
+</apex:page>

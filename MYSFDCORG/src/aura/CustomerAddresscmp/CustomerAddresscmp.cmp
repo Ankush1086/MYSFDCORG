@@ -1,0 +1,53 @@
+<aura:component controller="CustomerSaveController">
+   <ltng:require scripts="{!$Resource.JSUtilities}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="lDevice"  type="String" default="3"/>
+	<aura:attribute name="mDevice"  type="String" default="3"/>
+	<aura:attribute name="sDevice"  type="String" default="3"/>
+	<aura:attribute name="isDisabled"  type="Boolean" default="true"/>
+    <aura:attribute name="contactValidationMap" type="Map" access="PRIVATE" />
+    <aura:attribute name="isDataValid" type="Boolean" default="true" access="PRIVATE" />
+    <aura:attribute name="ContactID"  type="String" />
+    <aura:handler event="c:BroadcastCustomerID" action="{!c.setCustomerID}"/> 
+    <aura:attribute name="contact" type="Contact" default="{ 'sobjectType': 'Contact',
+                                                           						  'Id':'',
+	                                                                              'OtherCity':'',
+																				  'OtherState':'',
+																				  'OtherStreet':'',
+																				  'OtherPostalCode':'',
+	                                                                              }" />
+    
+     <aura:method name="validate" action="{!c.validate}" description="validate all data"> 
+	</aura:method> 
+    
+     <aura:method name="save" action="{!c.save}" description="save all data"> 
+	</aura:method>
+    
+    <div id="sourcingDetails" class="contentBox">
+		<div class="headerDiv" >
+            
+            <lightning:layout class="slds-grid--vertical-stretch" horizontalAlign="left" multipleRows="true">
+					<lightning:layoutItem padding="horizontal-small" largeDeviceSize="{!v.lDevice}" mediumDeviceSize="{!v.mDevice}" smallDeviceSize="{!v.sDevice}" size="12">
+                        
+                        <lightning:input aura:id="contact.OtherCity" disabled="false" name="City" required="true" value="{!v.contact.OtherCity}" label="City" onblur="{!c.handleBlur}" />
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem padding="horizontal-small" largeDeviceSize="{!v.lDevice}" mediumDeviceSize="{!v.mDevice}" smallDeviceSize="{!v.sDevice}" size="12">
+                        
+                        <lightning:input aura:id="contact.OtherState" disabled="false" name="State" required="true" value="{!v.contact.OtherState}" label="State" />
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem padding="horizontal-small" largeDeviceSize="{!v.lDevice}" mediumDeviceSize="{!v.mDevice}" smallDeviceSize="{!v.sDevice}" size="12">
+                        
+                        <lightning:input aura:id="contact.OtherStreet" disabled="false" name="Street" required="true" value="{!v.contact.OtherStreet}" label="Street" />
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-small" largeDeviceSize="{!v.lDevice}" mediumDeviceSize="{!v.mDevice}" smallDeviceSize="{!v.sDevice}" size="12">
+                        
+                        <lightning:input aura:id="contact.OtherPostalCode" disabled="false" name="PostalCode" required="true" value="{!v.contact.OtherPostalCode}" label="Postal Code" />
+                </lightning:layoutItem>
+            </lightning:layout>
+            
+        </div>
+    </div>
+	
+</aura:component>
