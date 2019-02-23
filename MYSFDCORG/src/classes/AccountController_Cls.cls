@@ -22,5 +22,16 @@ public class  AccountController_Cls {
          
     return taskList;
     }
-
+   
+   
+    public static List<Task> getAccountTaskBackupMarchRelease(String AccountID) {
+      List<String> TaskID = new List<String>();   
+         List<Task> taskList =  [Select id,Subject,Status from Task where WhatID =:AccountID];
+         for(Task rs:taskList) {
+            TaskID.add(rs.id); 
+             
+         }
+         
+    return taskList;
+    }
 }
